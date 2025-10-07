@@ -2,7 +2,7 @@ const request = require('supertest');
 const { expect } = require('chai');
 const { faker } = require('@faker-js/faker');
 require('dotenv').config();
-const postregister = require("../fixtures/postUsersRegister.json");
+const postregister = require("../fixtures/postRegister.json");
 const { registrarUsuario } = require('../helpers/registrarUsuario');
 
 describe('POST /users/register', () => {
@@ -20,6 +20,7 @@ describe('POST /users/register', () => {
     it('Deve retornar 400 com mensagem avisando que usuário já foi cadastrado', async () => {
         const bodyregister = { ...postregister };
 
+        await registrarUsuario(process.env.BASE_URL, bodyregister);
         const resposta = await registrarUsuario(process.env.BASE_URL, bodyregister);
 
         expect(resposta.status).to.equal(400);
