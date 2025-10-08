@@ -1,7 +1,7 @@
 
 const request = require('supertest');
 const { expect } = require('chai');
-const app = require('../../../app');
+const app = require('../../app');
 
 describe('GET /users', () => {
   it('deve retornar status 200 e um array', async () => {
