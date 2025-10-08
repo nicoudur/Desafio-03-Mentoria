@@ -1,8 +1,8 @@
-const request = require('supertest')
+const request = require('supertest');
 require('dotenv').config()
 const postLogin = require("../fixtures/postLogin.json")
 
-const obterToken = async (usuario, senha) => {
+const obterToken = async () => {
      const bodyLogin = { ...postLogin  }
 
     const resposta = await request(process.env.BASE_URL)
