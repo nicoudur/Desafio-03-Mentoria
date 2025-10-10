@@ -9,13 +9,13 @@ describe('Login', () => {
 
             const bodyLogin = { ...postLogin }
 
-            const resposta = await request(process.env.BASE_URL)
+            const response = await request(process.env.BASE_URL)
                 .post('/users/login')
                 .set('Content-Type', 'application/json')
                 .send(bodyLogin)
 
-            expect(resposta.status).to.equal(200);
-            expect(resposta.body.token).to.be.a('string');
+            expect(response.status).to.equal(200);
+            expect(response.body.token).to.be.a('string');
         })
 
         it('Deve retornar 400 com o mensagem de Usuário não encontrado', async () => {
@@ -24,13 +24,13 @@ describe('Login', () => {
 
             bodyLogin.username = 'teste'
 
-            const resposta = await request(process.env.BASE_URL)
+            const response = await request(process.env.BASE_URL)
                 .post('/users/login')
                 .set('Content-Type', 'application/json')
                 .send(bodyLogin)
 
-            expect(resposta.status).to.equal(400);
-            expect(resposta.body.error).to.equal("Usuário não encontrado");
+            expect(response.status).to.equal(400);
+            expect(response.body.error).to.equal("Usuário não encontrado");
 
         })
 
@@ -40,13 +40,13 @@ describe('Login', () => {
 
             bodyLogin.password = 'teste'
 
-            const resposta = await request(process.env.BASE_URL)
+            const response = await request(process.env.BASE_URL)
                 .post('/users/login')
                 .set('Content-Type', 'application/json')
                 .send(bodyLogin)
 
-            expect(resposta.status).to.equal(400);
-            expect(resposta.body.error).to.equal("Senha inválida");
+            expect(response.status).to.equal(400);
+            expect(response.body.error).to.equal("Senha inválida");
 
         })
 
@@ -56,13 +56,13 @@ describe('Login', () => {
 
             bodyLogin.username = ''
 
-            const resposta = await request(process.env.BASE_URL)
+            const response = await request(process.env.BASE_URL)
                 .post('/users/login')
                 .set('Content-Type', 'application/json')
                 .send(bodyLogin)
 
-            expect(resposta.status).to.equal(400);
-            expect(resposta.body.error).to.equal("Usuário e senha obrigatórios");
+            expect(response.status).to.equal(400);
+            expect(response.body.error).to.equal("Usuário e senha obrigatórios");
 
         })
 
@@ -72,13 +72,13 @@ describe('Login', () => {
 
             bodyLogin.password = ''
 
-            const resposta = await request(process.env.BASE_URL)
+            const response = await request(process.env.BASE_URL)
                 .post('/users/login')
                 .set('Content-Type', 'application/json')
                 .send(bodyLogin)
 
-            expect(resposta.status).to.equal(400);
-            expect(resposta.body.error).to.equal("Usuário e senha obrigatórios");
+            expect(response.status).to.equal(400);
+            expect(response.body.error).to.equal("Usuário e senha obrigatórios");
 
         })
 

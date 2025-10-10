@@ -1,7 +1,7 @@
 import http from 'k6/http';
 import { sleep, check } from 'k6';
-import { pegarBaseURL } from '../utils/variaveis.js';
-import { obterToken } from '../helpers/logarUsuarioK6.js';
+import { getBaseURL } from '../utils/variables.js';
+import { getToken } from '../helpers/loginUserK6.js';
 
 
 
@@ -20,9 +20,9 @@ export const options = {
 };
 
 export default function () {
-    const token = obterToken();
+    const token = getToken();
     
-    const url = pegarBaseURL() + '/transfers';
+    const url = getBaseURL() + '/transfers';
    
 
     const params = {

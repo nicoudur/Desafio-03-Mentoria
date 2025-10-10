@@ -2,7 +2,7 @@ const request = require('supertest');
 require('dotenv').config()
 const postLogin = require("../fixtures/postLogin.json")
 
-const obterToken = async () => {
+const getToken = async () => {
      const bodyLogin = { ...postLogin  }
 
     const resposta = await request(process.env.BASE_URL)
@@ -14,5 +14,5 @@ const obterToken = async () => {
 }
 
 module.exports = {
-    obterToken
+    getToken
 }

@@ -1,7 +1,7 @@
 import http from 'k6/http';
 import { sleep, check } from 'k6';
 const postRegister = JSON.parse(open('../fixtures/postRegister.json'))
-import { pegarBaseURL } from '../utils/variaveis.js';
+import { getBaseURL } from '../utils/variables.js';
 
 
 export const options = {
@@ -22,7 +22,7 @@ export default function () {
     const bodyregister = { ...postRegister };
     bodyregister.username = "Usuario" + Date.now();
 
-    const url = pegarBaseURL() + '/users/register';
+    const url = getBaseURL() + '/users/register';
     const payload = JSON.stringify(bodyregister);
 
     const params = {
